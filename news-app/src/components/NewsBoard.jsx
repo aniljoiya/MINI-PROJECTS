@@ -27,7 +27,7 @@ const NewsBoard = ({ category }) => {
         </h2>
 
         <div className="row g-4">
-        {articles.map((news, index) => (
+        {articles?.map((news, index) => (
             <div className="col-lg-3 col-md-6 col-sm-12" key={index}>
             <NewsItem
                 title={news.title}
