@@ -12,7 +12,7 @@ const NewsBoard = ({ category }) => {
                 let url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${import.meta.env.VITE_NEWS_API_KEY}`;
                 const response = await fetch(url);
                 const data = await response.json();
-                setArticles(data.articles);
+                setArticles(data.articles || []);
             } catch (error) {
                 console.error('Error fetching news:', error);
             }
@@ -27,7 +27,7 @@ const NewsBoard = ({ category }) => {
         </h2>
 
         <div className="row g-4">
-        {articles?.map((news, index) => (
+        {articles && articles.map((news, index) => (
             <div className="col-lg-3 col-md-6 col-sm-12" key={index}>
             <NewsItem
                 title={news.title}
